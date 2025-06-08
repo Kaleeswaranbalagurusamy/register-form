@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+</head>
+<body>
+
+<style>
+    .nameerror,.emailerror,.phoneerror,.passworderror{
+
+        color: red;
+        display: none;
+
+    }
+
+    div{
+        color: rgb(57, 62, 124);
+        border: 5px solid green;
+        margin: auto;
+        margin-top: 200px;
+        width: 50%;
+        padding: 10px;
+        background-color: rgb(230, 228, 228);
+        text-align: center;
+        border-radius: 50px;
+    }
+
+    #submit{
+            width: 150px;
+            height: 25px;
+            border-radius: 5px; 
+    }
+    #name,#email,#phone,#password{
+            width: 400px;
+            text-align: center;
+            height: 25px;
+    }
+</style>
+
+<div class="">
+
+    <form action="">
+      <table>
+            <h1>Register Form</h1>
+            <tr>
+                <td><h1>Name :</h1></td>
+                <td><input type="text" placeholder="Enter your Name" id="name"></td>
+                <td><span class="nameerror">Name must Contains only letters</span></td>
+            </tr>
+
+            <tr>
+                <td><h1>Email id:</h1></td>
+                <td><input type="text" placeholder="Enter your Email id" id="email"></td>
+                <td><span class="emailerror">Enter valid email address</span></td>
+            </tr>
+
+            <tr>
+                <td><h1>Contact No :</h1></td>
+                <td><input type="number" placeholder="Enter your Contact no" id="phone"></td>
+                <td><span class="phoneerror">Phone numbers must contains only 10 digits</span></td>
+            </tr>
+
+            <tr>
+                <td><h1>Password :</h1></td>
+                <td><input type="text" placeholder="Enter your password" id="password"></td>
+                <td><span class="passworderror">Password contains 8 digits only</span></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <td><input type="submit" id="submit" ></td>
+                </td>
+            </tr>
+
+      </table>
+        <h3 class="login">Already have an account?<a href="">login</a></h3>  
+    </form>
+
+</div>
+
+<script>
+    var submit = document.getElementById("submit")
+    submit.addEventListener("click",function(){
+    event.preventDefault()
+
+    var nameRegex = /^[a-zA-Z]+$/
+    var emailRegex = /^[a-zA-Z0-9]+@gmail\.com/
+    var phoneRegex = /^\d{10}$/
+    var passwordRegex = /^[A-Za-z\d@$!%*?&]{8,}$/
+
+    var name = document.getElementById("name")
+    var phone = document.getElementById("phone")
+    var email = document.getElementById("email")
+    var password = document.getElementById("password")
+
+    var validate = true
+
+    if(nameRegex.test(name.value) == false){
+        document.querySelector(".nameerror").style.display ="inline"
+        validate = false
+    }
+    else{
+        document.querySelector(".nameerror").style.display="none"
+    }
+
+    if(emailRegex.test(email.value) == false){
+        document.querySelector(".emailerror").style.display ="inline"
+        validate = false
+    }
+    else{
+        document.querySelector(".emailerror").style.display="none"
+    }
+
+    if(phoneRegex.test(phone.value) == false){
+        document.querySelector(".phoneerror").style.display ="inline"
+        validate = false
+    }
+    else{
+        document.querySelector(".phoneerror").style.display="none"
+    }
+
+    if(passwordRegex.test(password.value) == false){
+        document.querySelector(".passworderror").style.display ="inline"
+        validate = false
+    }
+    else{
+        document.querySelector(".passworderror").style.display="none"
+    }
+
+    if(validate == true)
+    {
+        alert("Form submitted Successfully")
+    }
+
+    })
+</script>
+    
+</body>
+</html>
